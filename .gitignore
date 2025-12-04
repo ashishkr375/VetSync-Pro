@@ -1,0 +1,65 @@
+# Node dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+.vite/
+
+# Local env files
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDEs and editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Misc caches
+.cache/
+.parcel-cache/
+.eslintcache
+
+# Temporary files
+*.tmp
+*.temp
+
+# Yarn v2/v3 PnP
+.pnp.*
+
+# Storybook
+.out/
+
+# Ignore build artifacts from some tools
+*.tgz
+
+# Lockfiles: keep package-lock.json to ensure reproducible installs (do not ignore by default)
+# If you prefer to ignore lockfiles for your workflow, uncomment:
+# package-lock.json
+# yarn.lock
+
+# Windows
+Thumbs.db
+
+# Optional: OS metadata
+.AppleDouble
+.LSOverride

@@ -1,0 +1,786 @@
+/* --- Core Layout --- */
+.features {
+    padding: 6rem 0;
+    background-color: #f8fafc;
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.preTitle {
+    color: #6366f1;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    background: rgba(99, 102, 241, 0.1);
+    padding: 6px 16px;
+    border-radius: 20px;
+}
+
+.title {
+    font-size: 3rem;
+    color: #0f172a;
+    margin: 1.5rem 0 1rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.subtitle {
+    color: #64748b;
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* --- Grid & Card Basics --- */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 280px;
+    gap: 1.5rem;
+}
+
+.card {
+    background: white;
+    border-radius: 24px;
+    border: 1px solid #e2e8f0;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+    border-color: #cbd5e1;
+}
+
+.spotlight {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.cardContent {
+    padding: 2rem;
+    z-index: 2;
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Typography & Icons --- */
+.iconWrapper {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+    transition: transform 0.3s ease;
+}
+
+/* Color Themes */
+.blue { background: #eff6ff; color: #3b82f6; }
+.indigo { background: #eef2ff; color: #6366f1; }
+.green { background: #f0fdf4; color: #22c55e; }
+.orange { background: #fff7ed; color: #f97316; }
+.rose { background: #fff1f2; color: #f43f5e; }
+.purple { background: #f3e8ff; color: #a855f7; }
+.cyan { background: #ecfeff; color: #06b6d4; }
+
+.card:hover .iconWrapper {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+.cardTitle {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+}
+
+.cardDescription {
+    color: #64748b;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* --- Bento Layout Spans --- */
+.spanTwo { grid-column: span 2; display: flex; flex-direction: row; }
+.spanTwo .cardContent { width: 50%; }
+.spanTwo .cardVisual { width: 50%; height: 100%; position: relative; }
+
+.spanRow { grid-row: span 2; }
+.spanRow .cardContent { height: auto; flex: 0 0 auto; }
+.spanRow .cardVisual { flex: 1; position: relative; display: flex; justify-content: center; align-items: flex-end; }
+
+/* =========================================
+   VISUALS: CARD 1 (WEBSITE)
+   ========================================= */
+.browserVisual {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) perspective(1000px) rotateY(-8deg) rotateX(5deg) scale(0.9);
+    width: 90%;
+    height: 80%;
+    background: white;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: all 0.5s ease;
+}
+
+.card:hover .browserVisual {
+    transform: translate(-50%, -50%) perspective(1000px) rotateY(0) rotateX(0) scale(1);
+    box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.2);
+}
+
+.browserHeader {
+    background: #f1f5f9;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e2e8f0;
+}
+.dots { display: flex; gap: 4px; margin-right: 12px; }
+.dots span { width: 8px; height: 8px; border-radius: 50%; background: #cbd5e1; }
+.dots span:nth-child(1) { background: #ef4444; }
+.dots span:nth-child(2) { background: #f59e0b; }
+.dots span:nth-child(3) { background: #22c55e; }
+.addressBar {
+    flex: 1; height: 16px; background: white; border-radius: 4px; 
+    font-size: 8px; color: #94a3b8; display: flex; align-items: center; padding-left: 8px;
+}
+
+.browserBody { padding: 15px; position: relative; flex: 1; }
+.heroSection { display: flex; gap: 10px; margin-bottom: 15px; }
+.heroText { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+.heroTitle { height: 10px; width: 80%; background: #e2e8f0; border-radius: 4px; }
+.heroSubtitle { height: 6px; width: 60%; background: #f1f5f9; border-radius: 4px; }
+.heroBtn { 
+    margin-top: 5px; background: #3b82f6; color: white; width: fit-content; 
+    padding: 4px 10px; border-radius: 4px; font-size: 8px; font-weight: bold;
+}
+.heroImage {
+    width: 50px; height: 50px; background: #bfdbfe; border-radius: 8px; position: relative;
+}
+.floatingReview {
+    position: absolute; bottom: -5px; right: -10px; background: white; 
+    padding: 4px; border-radius: 4px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    display: flex; flex-direction: column; align-items: center; gap: 2px;
+}
+.stars { display: flex; gap: 1px; } 
+.floatingReview span { font-size: 5px; font-weight: 700; color: #1e293b; }
+
+.bookingModal {
+    position: absolute; bottom: -100%; left: 15px; right: 15px;
+    background: white; border-radius: 8px 8px 0 0; 
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+    padding: 10px; transition: bottom 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.card:hover .bookingModal { bottom: 0; }
+
+.modalHeader { font-size: 10px; font-weight: 700; margin-bottom: 6px; color: #1e293b; }
+.timeSlots { display: flex; gap: 5px; margin-bottom: 8px; }
+.slot, .slotActive { 
+    font-size: 7px; padding: 3px 6px; border-radius: 4px; border: 1px solid #e2e8f0;
+}
+.slotActive { background: #eff6ff; border-color: #3b82f6; color: #3b82f6; }
+.confirmBtn { 
+    background: #22c55e; color: white; text-align: center; 
+    padding: 4px; border-radius: 4px; font-size: 8px; font-weight: 700;
+}
+
+/* =========================================
+   VISUALS: CARD 2 (PHONE APP)
+   ========================================= */
+.phoneVisual {
+    width: 180px; height: 320px;
+    background: #1e293b;
+    border-radius: 24px 24px 0 0;
+    border: 6px solid #1e293b;
+    border-bottom: 0;
+    position: relative;
+    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.3);
+    overflow: hidden;
+    transform: translateY(30px);
+    transition: transform 0.4s ease;
+}
+.card:hover .phoneVisual { transform: translateY(10px); }
+
+.notch { 
+    width: 80px; height: 18px; background: #1e293b; 
+    position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    border-radius: 0 0 10px 10px; z-index: 10;
+}
+
+.phoneScreen {
+    background: #f8fafc; width: 100%; height: 100%;
+    border-radius: 18px 18px 0 0; padding: 25px 12px 12px;
+    display: flex; flex-direction: column; gap: 10px;
+}
+
+.appHeader { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+.userAvatar {
+    width: 24px; height: 24px; background: #c7d2fe; color: #4338ca;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+}
+.greeting span { display: block; font-size: 10px; font-weight: 700; color: #1e293b; }
+.greeting small { display: block; font-size: 8px; color: #64748b; }
+
+.petCard {
+    background: linear-gradient(135deg, #6366f1, #818cf8);
+    border-radius: 12px; padding: 12px; color: white;
+    position: relative; overflow: hidden;
+    box-shadow: 0 8px 15px -4px rgba(99, 102, 241, 0.4);
+    transition: transform 0.3s ease;
+}
+.card:hover .petCard { transform: scale(1.02); }
+.petAvatar { font-size: 20px; margin-bottom: 4px; }
+.petName { font-size: 12px; font-weight: 700; display: block; }
+.petStatus { font-size: 8px; opacity: 0.9; }
+.statusPill {
+    position: absolute; top: 12px; right: 12px;
+    background: rgba(255,255,255,0.2); backdrop-filter: blur(4px);
+    padding: 2px 6px; border-radius: 10px; font-size: 7px;
+}
+
+.appointCard {
+    background: white; border-radius: 12px; padding: 10px;
+    display: flex; align-items: center; gap: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.cardIcon {
+    width: 24px; height: 24px; background: #fee2e2; color: #ef4444;
+    border-radius: 6px; display: flex; align-items: center; justify-content: center;
+}
+.appointTitle { display: block; font-size: 9px; font-weight: 700; color: #1e293b; }
+.appointSub { font-size: 8px; color: #64748b; }
+
+.fabButton {
+    position: absolute; bottom: 15px; right: 15px;
+    width: 32px; height: 32px; background: #0f172a; color: white;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 18px; box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.card:hover .fabButton { transform: rotate(90deg) scale(1.1); }
+
+/* =========================================
+   SMALL CARDS MICRO-INTERACTIONS
+   ========================================= */
+.miniVisual {
+    margin-top: auto; 
+    height: 60px; 
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Calendar */
+.calendarWidget {
+    width: 50px; height: 50px; background: white; 
+    border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden;
+    position: relative; box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+.card:hover .calendarWidget { transform: rotate(-5deg) translateY(-5px); }
+.calHeader { background: #ef4444; color: white; font-size: 8px; text-align: center; padding: 2px; }
+.calBody { font-size: 18px; font-weight: 800; text-align: center; color: #1e293b; padding-top: 2px; }
+.checkIcon { 
+    position: absolute; inset: 0; background: rgba(255,255,255,0.9); 
+    display: flex; align-items: center; justify-content: center; color: #22c55e;
+    opacity: 0; transition: opacity 0.3s;
+}
+.card:hover .checkIcon { opacity: 1; }
+
+/* Files */
+.fileWidget { position: relative; width: 100%; height: 100%; }
+.fileFolder {
+    width: 40px; height: 30px; background: #fbbf24; border-radius: 4px;
+    position: absolute; bottom: 10px; left: 0; z-index: 2;
+}
+.filePaper {
+    width: 35px; height: 40px; background: white; border: 1px solid #e2e8f0;
+    position: absolute; bottom: 10px; left: 2px; transition: transform 0.4s ease;
+    padding: 4px; display: flex; flex-direction: column; gap: 3px; z-index: 1;
+}
+.line { height: 2px; background: #e2e8f0; border-radius: 2px; width: 100%; }
+.card:hover .filePaper { transform: translateY(-15px); }
+.shieldIcon {
+    position: absolute; right: 0; top: 10px; color: #3b82f6; 
+    opacity: 0; transform: scale(0.5); transition: all 0.3s 0.1s;
+}
+.card:hover .shieldIcon { opacity: 1; transform: scale(1); }
+
+/* Bell */
+.bellWidget { width: 100%; }
+.notificationBubble {
+    background: #1e293b; color: white; padding: 8px 12px; border-radius: 8px;
+    border-bottom-left-radius: 2px; display: flex; align-items: center; gap: 8px;
+    font-size: 10px; width: fit-content;
+    transform: translateX(-10px); opacity: 0; transition: all 0.4s ease;
+}
+.card:hover .notificationBubble { transform: translateX(0); opacity: 1; }
+
+/* Credit Card */
+.cardWidget { width: 100%; perspective: 1000px; }
+.creditCard {
+    width: 60px; height: 40px; background: linear-gradient(135deg, #8b5cf6, #d946ef);
+    border-radius: 6px; padding: 5px; position: relative;
+    transition: transform 0.5s ease;
+}
+.card:hover .creditCard { transform: rotateY(180deg) translateX(10px); }
+.chip { width: 8px; height: 6px; background: #fbbf24; border-radius: 2px; margin-bottom: 12px; }
+.dots { color: rgba(255,255,255,0.8); font-size: 10px; letter-spacing: 1px; }
+
+/* Analytics */
+.graphWidget {
+    display: flex; align-items: flex-end; gap: 4px; height: 40px; width: 100%; position: relative;
+}
+.bar1, .bar2, .bar3 { width: 8px; background: #06b6d4; border-radius: 2px 2px 0 0; transition: height 0.5s ease; }
+.bar1 { height: 15px; opacity: 0.3; } .bar2 { height: 25px; opacity: 0.6; } .bar3 { height: 10px; opacity: 1; }
+.card:hover .bar1 { height: 25px; } .card:hover .bar2 { height: 35px; } .card:hover .bar3 { height: 40px; }
+.trendLine {
+    position: absolute; right: 10px; top: 0; color: #22c55e;
+    opacity: 0; transform: scale(0); transition: all 0.3s 0.2s;
+}
+.card:hover .trendLine { opacity: 1; transform: scale(1); }
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 968px) {
+    .grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: auto; }
+    .spanTwo { grid-column: span 2; }
+    .spanRow { grid-column: span 1; grid-row: auto; }
+    /* Hide complex visual for phone on tablet if it gets too cramped, or adjust style */
+    .spanRow .cardVisual { display: none; }
+}
+
+@media (max-width: 640px) {
+    .grid { grid-template-columns: 1fr; }
+    .spanTwo { 
+        grid-column: span 1; 
+        flex-direction: column; 
+    }
+    .spanTwo .cardContent, .spanTwo .cardVisual { width: 100%; }
+    .spanTwo .cardVisual { height: 200px; margin-top: 1rem; }
+    
+    .title { font-size: 2rem; }
+    .cardVisual { transform: scale(0.9); }
+}
+/* --- Core Layout --- */
+.features {
+  padding: 6rem 0;
+  background-color: #f8fafc;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.preTitle {
+  color: #6366f1;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  background: rgba(99, 102, 241, 0.1);
+  padding: 6px 16px;
+  border-radius: 20px;
+}
+
+.title {
+  font-size: 3rem;
+  color: #0f172a;
+  margin: 1.5rem 0 1rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  color: #64748b;
+  font-size: 1.25rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* --- Grid & Card Basics --- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 280px;
+  gap: 1.5rem;
+}
+
+.card {
+  background: white;
+  border-radius: 24px;
+  border: 1px solid #e2e8f0;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+  border-color: #cbd5e1;
+}
+
+.spotlight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cardContent {
+  padding: 2rem;
+  z-index: 2;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Typography & Icons --- */
+.iconWrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  transition: transform 0.3s ease;
+}
+
+/* Color Themes */
+.blue { background: #eff6ff; color: #3b82f6; }
+.indigo { background: #eef2ff; color: #6366f1; }
+.green { background: #f0fdf4; color: #22c55e; }
+.orange { background: #fff7ed; color: #f97316; }
+.rose { background: #fff1f2; color: #f43f5e; }
+.purple { background: #f3e8ff; color: #a855f7; }
+.cyan { background: #ecfeff; color: #06b6d4; }
+
+.card:hover .iconWrapper {
+  transform: scale(1.1) rotate(-5deg);
+}
+
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+}
+
+.cardDescription {
+  color: #64748b;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* --- Bento Layout Spans (Desktop Defaults) --- */
+.spanTwo { 
+  grid-column: span 2; 
+  display: flex; 
+  flex-direction: row; 
+}
+.spanTwo .cardContent { width: 50%; }
+
+/* VISUAL CONTAINER FIX: Use Flexbox centering instead of Absolute positioning */
+.spanTwo .cardVisual { 
+  width: 50%; 
+  height: 100%; 
+  position: relative; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.spanRow { grid-row: span 2; }
+.spanRow .cardContent { flex: 0 0 auto; }
+.spanRow .cardVisual { 
+  flex: 1; 
+  position: relative; 
+  display: flex; 
+  justify-content: center; 
+  align-items: flex-end; 
+  min-height: 0; /* Important for flex child */
+}
+
+/* =========================================
+   VISUALS: CARD 1 (WEBSITE)
+   ========================================= */
+
+
+.browserHeader {
+  background: #f1f5f9;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e2e8f0;
+}
+.dots { display: flex; gap: 4px; margin-right: 12px; }
+.dots span { width: 8px; height: 8px; border-radius: 50%; background: #cbd5e1; }
+.dots span:nth-child(1) { background: #ef4444; }
+.dots span:nth-child(2) { background: #f59e0b; }
+.dots span:nth-child(3) { background: #22c55e; }
+.addressBar {
+  flex: 1; height: 16px; background: white; border-radius: 4px; 
+  font-size: 8px; color: #94a3b8; display: flex; align-items: center; padding-left: 8px;
+}
+
+.browserBody { padding: 15px; position: relative; flex: 1; display: flex; flex-direction: column; }
+.heroSection { display: flex; gap: 10px; margin-bottom: 15px; }
+.heroText { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+.heroTitle { height: 10px; width: 80%; background: #e2e8f0; border-radius: 4px; }
+.heroSubtitle { height: 6px; width: 60%; background: #f1f5f9; border-radius: 4px; }
+.heroBtn { 
+  margin-top: 5px; background: #3b82f6; color: white; width: fit-content; 
+  padding: 4px 10px; border-radius: 4px; font-size: 8px; font-weight: bold;
+}
+.heroImage {
+  width: 50px; height: 50px; background: #bfdbfe; border-radius: 8px; position: relative;
+}
+.floatingReview {
+  position: absolute; bottom: -5px; right: -10px; background: white; 
+  padding: 4px; border-radius: 4px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+}
+.stars { display: flex; gap: 1px; } 
+.floatingReview span { font-size: 5px; font-weight: 700; color: #1e293b; }
+
+.bookingModal {
+  position: absolute; bottom: -100%; left: 15px; right: 15px;
+  background: white; border-radius: 8px 8px 0 0; 
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+  padding: 10px; transition: bottom 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.card:hover .bookingModal { bottom: 0; }
+/* Force show modal on mobile so it's not empty */
+@media (max-width: 768px) {
+    .bookingModal { bottom: 0; }
+    .browserVisual { transform: none; }
+}
+
+.modalHeader { font-size: 10px; font-weight: 700; margin-bottom: 6px; color: #1e293b; }
+.timeSlots { display: flex; gap: 5px; margin-bottom: 8px; }
+.slot, .slotActive { 
+  font-size: 7px; padding: 3px 6px; border-radius: 4px; border: 1px solid #e2e8f0;
+}
+.slotActive { background: #eff6ff; border-color: #3b82f6; color: #3b82f6; }
+.confirmBtn { 
+  background: #22c55e; color: white; text-align: center; 
+  padding: 4px; border-radius: 4px; font-size: 8px; font-weight: 700;
+}
+
+/* =========================================
+   VISUALS: CARD 2 (PHONE APP)
+   ========================================= */
+.phoneVisual {
+  width: 180px; 
+  /* Fixed height logic for proper display */
+  height: 320px;
+  margin-bottom: -40px; /* Push it down slightly */
+  background: #1e293b;
+  border-radius: 24px 24px 0 0;
+  border: 6px solid #1e293b;
+  border-bottom: 0;
+  position: relative;
+  box-shadow: 0 20px 40px -10px rgba(0,0,0,0.3);
+  overflow: hidden;
+  transform: translateY(30px);
+  transition: transform 0.4s ease;
+}
+.card:hover .phoneVisual { transform: translateY(10px); }
+/* Force show phone up on mobile */
+@media (max-width: 768px) {
+    .phoneVisual { transform: translateY(10px); margin-bottom: 0; }
+}
+
+.notch { 
+  width: 80px; height: 18px; background: #1e293b; 
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  border-radius: 0 0 10px 10px; z-index: 10;
+}
+
+.phoneScreen {
+  background: #f8fafc; width: 100%; height: 100%;
+  border-radius: 18px 18px 0 0; padding: 25px 12px 12px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+
+.appHeader { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+.userAvatar {
+  width: 24px; height: 24px; background: #c7d2fe; color: #4338ca;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+}
+.greeting span { display: block; font-size: 10px; font-weight: 700; color: #1e293b; }
+.greeting small { display: block; font-size: 8px; color: #64748b; }
+
+.petCard {
+  background: linear-gradient(135deg, #6366f1, #818cf8);
+  border-radius: 12px; padding: 12px; color: white;
+  position: relative; overflow: hidden;
+  box-shadow: 0 8px 15px -4px rgba(99, 102, 241, 0.4);
+  transition: transform 0.3s ease;
+}
+.card:hover .petCard { transform: scale(1.02); }
+.petAvatar { font-size: 20px; margin-bottom: 4px; }
+.petName { font-size: 12px; font-weight: 700; display: block; }
+.petStatus { font-size: 8px; opacity: 0.9; }
+.statusPill {
+  position: absolute; top: 12px; right: 12px;
+  background: rgba(255,255,255,0.2); backdrop-filter: blur(4px);
+  padding: 2px 6px; border-radius: 10px; font-size: 7px;
+}
+
+.appointCard {
+  background: white; border-radius: 12px; padding: 10px;
+  display: flex; align-items: center; gap: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.cardIcon {
+  width: 24px; height: 24px; background: #fee2e2; color: #ef4444;
+  border-radius: 6px; display: flex; align-items: center; justify-content: center;
+}
+.appointTitle { display: block; font-size: 9px; font-weight: 700; color: #1e293b; }
+.appointSub { font-size: 8px; color: #64748b; }
+
+.fabButton {
+  position: absolute; bottom: 15px; right: 15px;
+  width: 32px; height: 32px; background: #0f172a; color: white;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 18px; box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.card:hover .fabButton { transform: rotate(90deg) scale(1.1); }
+
+
+/* Small Card Visuals (Calendar, Credit Card, etc) */
+.miniVisual {
+  margin-top: auto; height: 60px; position: relative;
+  display: flex; align-items: center;
+}
+/* ... [Keep your existing small visuals CSS (CalendarWidget, etc) here] ... */
+
+
+/* =========================================
+   RESPONSIVE FIXES (The Important Part)
+   ========================================= */
+
+/* Tablet & Mobile Breakpoint */
+@media (max-width: 968px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: auto; /* Let height be natural */
+  }
+
+  /* --- FIX 1: Website Card (SpanTwo) --- */
+  .spanTwo { 
+    grid-column: span 2; 
+    flex-direction: column; /* Stack text on top of image */
+  }
+  
+  .spanTwo .cardContent {
+    width: 100%;
+    padding-bottom: 0; /* Remove padding between text and image */
+  }
+
+  .spanTwo .cardVisual {
+    width: 100%;
+    height: 280px; /* Force height so image isn't cut off */
+    padding: 0 2rem 2rem 2rem;
+    align-items: flex-end; /* Align browser to bottom */
+  }
+  
+  .browserVisual {
+    width: 100%;
+    max-width: 100%; /* Fill container */
+    transform: none; /* Remove weird angles on mobile */
+  }
+
+  /* --- FIX 2: Client App Card (SpanRow) --- */
+  .spanRow {
+    grid-column: span 1;
+    grid-row: auto; /* Don't span 2 rows vertically */
+    display: flex;
+    flex-direction: column;
+    min-height: 400px; /* Make it tall enough to show phone */
+  }
+
+  .spanRow .cardVisual {
+    display: flex; /* UNHIDE IT */
+    width: 100%;
+    flex: 1; /* Take up remaining space */
+    justify-content: center;
+    align-items: flex-end; /* Push phone to bottom */
+  }
+
+  .phoneVisual {
+    width: 160px; /* Slightly smaller phone */
+    height: 280px;
+    margin-bottom: 0;
+  }
+}
+
+/* Mobile Breakpoint */
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr; /* Single column */
+  }
+
+  .spanTwo, .spanRow {
+    grid-column: span 1;
+  }
+
+  .title { font-size: 2rem; }
+  
+  /* Make sure App card is still tall enough on small phones */
+  .spanRow { min-height: 420px; }
+}
+  @media (max-width: 640px) {
+    .browserVisual {
+        transform: none;
+        top:0; left:0; width:100%; height:100%;
+        margin-top: 0;
+    }
+    .browserVisual:hover {
+        transform: none;
+
+    }
+
+  }
