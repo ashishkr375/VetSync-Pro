@@ -16,7 +16,7 @@ const Header = () => {
         <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
             <div className={styles.container}>
                 <div className={styles.logo}>
-                    <img src="logo.png" alt="VetSync Pro Logo" className={styles.logoImage} />
+                    <img src="./logo.png" alt="VetSync Pro Logo" className={styles.logoImage} />
                     <span className={styles.logoText}>VetSync Pro</span>
                 </div>
                 <nav className={styles.nav}>
